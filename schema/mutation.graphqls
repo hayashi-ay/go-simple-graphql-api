@@ -1,0 +1,8 @@
+type Mutation {
+  createTodo(input: NewTodo!): Boolean!
+}
+
+input NewTodo {
+  text: String!
+  userId: String!
+}
