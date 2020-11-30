@@ -26,6 +26,17 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) 
 	return true, nil
 }
 
+func (r *mutationResolver) UpdateTodo(ctx context.Context, todoID string, todoInput model.UpdateTodoInput) (bool, error) {
+	for _, todo := range r.todos {
+		if todo.ID == todoID {
+			todo.Text = todoInput.Text
+			todo.Done = todoInput.Done
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
 // Mutation returns generated.MutationResolver implementation.
 func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
 

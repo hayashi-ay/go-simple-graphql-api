@@ -1,8 +1,14 @@
 type Mutation {
   createTodo(input: NewTodo!): Boolean!
+  updateTodo(todoId: ID!, todoInput: UpdateTodoInput!): Boolean!
 }
 
 input NewTodo {
   text: String!
   userId: String!
+}
+
+input UpdateTodoInput {
+  text: String!
+  done: Boolean!
 }
